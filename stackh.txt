@@ -1,0 +1,44 @@
+//Project by Ethan Wolcott
+//6/10/2020
+//This class recreates the std vector class, allowing for dynamic memory allocation
+//of arrays of any object or variable. The class is a template class,
+//so any type of variable may be stored within, and then items may be swapped,
+//inserted, added, changed, or deleted at any point the user so desires.
+
+#ifndef STACK_H
+#define STACK_H
+#include <vector>
+#include <list>
+
+namespace cs273
+{
+    //This does add a slight complication.
+    //Every time you need to reference something from here below, you will need a cs273::
+    //This includes the implimentation of this header file.
+
+    //template class allows for broader use
+    template <typename T>
+    class stack
+    {
+
+    private: 
+    std::vector<T> container;
+    
+    //simply comment out the vector and un-comment the list to switch containers
+   // std::list<T> container;
+
+    public:
+       stack();
+       ~stack();
+       stack<T> &operator=(const stack<T> & v);
+       int size();
+       void push(const T & element);
+       void pop();
+       T& top();
+       bool empty();
+    };
+} 
+
+#include "stack.cpp"
+
+#endif

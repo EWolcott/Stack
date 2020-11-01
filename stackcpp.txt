@@ -1,0 +1,51 @@
+#include "stack.h"
+#include <vector>
+
+    template <typename T>
+    cs273::stack<T>::stack(){
+        
+    }
+
+    template <typename T>
+    cs273::stack<T>::~stack(){
+        container.clear();
+    }
+
+    template <typename T>
+    void cs273::stack<T>::push(const T & element){
+        container.push_back(element);
+        }
+    
+    template <typename T>
+    T & cs273::stack<T>::top(){
+        return container.back();
+        }
+    
+    template <typename T>
+    void cs273::stack<T>::pop(){
+        container.pop_back();
+        }
+        
+    template <typename T>
+    int cs273::stack<T>::size(){
+        return container.size();
+        }
+
+    template <typename T>
+    bool cs273::stack<T>::empty(){
+        return (container.size() == 0);
+    }
+   
+   template <typename T>
+   cs273::stack<T> & cs273::stack<T>::operator=(const stack<T> & v){
+       if (this != &v)
+    {
+        container.clear();
+    
+        for (int i = 0; i < v.size(); i++)
+        {
+            container[i] = v.container[i];
+        }
+    }
+    return *this;
+   }
